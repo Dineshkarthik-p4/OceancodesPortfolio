@@ -1,9 +1,9 @@
 {
+  "version": 2,
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
-}</content>
-<parameter name="filePath">c:\Users\User\Downloads\oceancodes-main\vercel.json
+}
