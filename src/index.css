@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 40% 4%;
+    --foreground: 200 30% 90%;
+
+    --card: 215 35% 8%;
+    --card-foreground: 200 30% 90%;
+
+    --popover: 215 35% 8%;
+    --popover-foreground: 200 30% 90%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 220 40% 4%;
+
+    --secondary: 210 40% 12%;
+    --secondary-foreground: 200 25% 80%;
+
+    --muted: 215 30% 10%;
+    --muted-foreground: 210 20% 50%;
+
+    --accent: 180 80% 45%;
+    --accent-foreground: 220 40% 4%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 25% 14%;
+    --input: 215 25% 14%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    --neon: 185 100% 55%;
+    --glow: 195 100% 50%;
+    --surface: 215 35% 8%;
+
+    --ocean-sky: 210 60% 15%;
+    --ocean-surface: 200 70% 12%;
+    --ocean-shallow: 195 65% 10%;
+    --ocean-mid: 210 60% 7%;
+    --ocean-deep: 220 50% 4%;
+    --ocean-abyss: 230 45% 2%;
+
+    --sidebar-background: 220 40% 4%;
+    --sidebar-foreground: 200 30% 90%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 220 40% 4%;
+    --sidebar-accent: 215 30% 10%;
+    --sidebar-accent-foreground: 200 30% 90%;
+    --sidebar-border: 215 25% 14%;
+    --sidebar-ring: 195 100% 50%;
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .light {
+    --background: 200 30% 96%;
+    --foreground: 215 40% 15%;
+
+    --card: 200 25% 92%;
+    --card-foreground: 215 40% 15%;
+
+    --popover: 200 25% 92%;
+    --popover-foreground: 215 40% 15%;
+
+    --primary: 195 100% 38%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 20% 88%;
+    --secondary-foreground: 215 30% 25%;
+
+    --muted: 200 15% 90%;
+    --muted-foreground: 210 15% 45%;
+
+    --accent: 180 70% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 82%;
+    --input: 200 20% 82%;
+    --ring: 195 100% 38%;
+
+    --neon: 185 90% 35%;
+    --glow: 195 90% 40%;
+    --surface: 200 25% 92%;
+
+    --ocean-sky: 200 40% 88%;
+    --ocean-surface: 200 35% 85%;
+    --ocean-shallow: 195 30% 82%;
+    --ocean-mid: 200 25% 78%;
+    --ocean-deep: 210 25% 75%;
+    --ocean-abyss: 215 25% 72%;
+
+    --sidebar-background: 200 30% 96%;
+    --sidebar-foreground: 215 40% 15%;
+    --sidebar-primary: 195 100% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 15% 90%;
+    --sidebar-accent-foreground: 215 40% 15%;
+    --sidebar-border: 200 20% 82%;
+    --sidebar-ring: 195 100% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-display antialiased;
+    font-family: var(--font-display);
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl border border-border/40;
+    background: hsla(215, 35%, 8%, 0.6);
+  }
+
+  .light .glass {
+    background: hsla(200, 30%, 98%, 0.7);
+  }
+
+  .glass-ocean {
+    @apply backdrop-blur-xl border border-neon/10;
+    background: hsla(210, 60%, 7%, 0.5);
+  }
+
+  .light .glass-ocean {
+    background: hsla(200, 30%, 96%, 0.6);
+    @apply border-neon/15;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--neon)), hsl(var(--primary)), hsl(195, 80%, 70%));
+  }
+
+  .gradient-text-ocean {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(185, 100%, 65%), hsl(195, 100%, 50%), hsl(210, 80%, 70%));
+  }
+
+  .mesh-gradient {
+    background-image:
+      radial-gradient(at 20% 30%, hsl(var(--primary) / 0.12) 0%, transparent 50%),
+      radial-gradient(at 80% 70%, hsl(var(--neon) / 0.08) 0%, transparent 50%),
+      radial-gradient(at 50% 50%, hsl(var(--glow) / 0.04) 0%, transparent 70%);
+  }
+
+  .skill-bar {
+    @apply h-2.5 rounded-full overflow-hidden;
+    background: hsl(var(--muted));
+  }
+
+  .skill-bar-fill {
+    @apply h-full rounded-full;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--neon)));
+  }
+
+  /* Ocean depth layers */
+  .ocean-layer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .light-rays {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(170deg, hsl(195 100% 50% / 0.03) 0%, transparent 40%),
+      linear-gradient(190deg, hsl(185 100% 55% / 0.02) 0%, transparent 35%),
+      linear-gradient(160deg, hsl(200 90% 60% / 0.02) 0%, transparent 45%);
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, hsl(195 100% 80% / 0.15), hsl(195 100% 50% / 0.05));
+    border: 1px solid hsl(195 100% 60% / 0.08);
+    animation: bubble-rise linear infinite;
+  }
+
+  @keyframes bubble-rise {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(-100vh) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: hsl(var(--neon) / 0.3);
+    animation: particle-float ease-in-out infinite;
+  }
+
+  @keyframes particle-float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0.2;
+    }
+    25% {
+      transform: translateY(-15px) translateX(8px);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px);
+      opacity: 0.3;
+    }
+    75% {
+      transform: translateY(-20px) translateX(3px);
+      opacity: 0.5;
+    }
+  }
+
+  .wave-line {
+    position: absolute;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--neon) / 0.15), transparent);
+    animation: wave-move linear infinite;
+  }
+
+  @keyframes wave-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+@layer utilities {
+  .shadow-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3), 0 0 60px hsl(var(--primary) / 0.1);
+  }
+
+  .shadow-neon {
+    box-shadow: 0 0 15px hsl(var(--neon) / 0.3), 0 0 45px hsl(var(--neon) / 0.1);
+  }
+
+  .shadow-ocean {
+    box-shadow: 0 0 30px hsl(var(--neon) / 0.15), 0 8px 32px hsl(220 50% 4% / 0.5);
+  }
+
+  .text-shadow-glow {
+    text-shadow: 0 0 20px hsl(var(--neon) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
+  }
+}
